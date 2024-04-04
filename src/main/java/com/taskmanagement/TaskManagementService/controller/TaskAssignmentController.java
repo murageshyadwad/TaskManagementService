@@ -35,5 +35,20 @@ public class TaskAssignmentController {
 		return response;
 	}
 
+	public ResponseEntity<?> getTaska(@PathVariable long userid) {
+		ResponseEntity<?> response = null;
 
+		try {
+
+		 long userid1 = assignService.assignTask(userid);
+			response = new ResponseEntity<>("Tasks Assigned to userid: " + userid1, HttpStatus.OK);
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+			response = new ResponseEntity<>(0, HttpStatus.NOT_FOUND);
+
+		}
+		return response;
+	}
 }
